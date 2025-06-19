@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>robots.txt Tester - SEO Tool</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      background: #0e0e10;
+      color: #ffffff;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #1c1c1f;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    h1 {
+      text-align: center;
+      color: #00ffe5;
+      margin-bottom: 20px;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+    textarea {
+      height: 200px;
+      resize: vertical;
+    }
+    .btn {
+      background-color: #00ffe5;
+      color: #000;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background-color: #00ccb8;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #27272a;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #888;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>robots.txt Tester</h1>
+    <form method="POST" action="/" enctype="multipart/form-data">
+      <label for="robots_content">Incolla il contenuto di robots.txt:</label>
+      <textarea name="robots_content" required></textarea>
+      <label for="test_url">URL da testare (facoltativo):</label>
+      <input type="text" name="test_url" placeholder="https://esempio.com/pagina"/>
+      <button type="submit" class="btn">Analizza</button>
+    </form>
+
+    {% if result %}
+      <div class="output">
+        <strong>Risultato:</strong><br>
+        {{ result }}
+      </div>
+    {% endif %}
+
+    {% if download_link %}
+      <div style="margin-top: 20px;">
+        <a href="{{ download_link }}" class="btn">Scarica robots.txt</a>
+      </div>
+    {% endif %}
+  </div>
+  <div class="footer">
+    Powered by robots.txt SEO Tester
+  </div>
+</body>
+</html>
